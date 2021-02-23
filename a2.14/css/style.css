@@ -1,0 +1,64 @@
+.menu {
+	padding: 30px;
+	margin: 10px;
+	background: #000000;
+	hover: red;
+	text-align: center;
+}
+.menu div {
+	display: inline;
+	padding: 30px;
+	margin: 0px;
+	background: #000000;
+	color: white;
+	text-align: center;
+	min-width: 30px;
+    width: 33%;
+    min-height: 20px;
+    text-transform: uppercase;
+
+}
+.menu div:hover{
+	background: red;
+}
+
+.lv1 div{
+display: inline-block;
+text-align: bottom;
+width: 33%;
+}
+
+h1 {
+	color: black;
+	text-transform: uppercase;
+	font-weight: strong;
+	font-size: 45px;
+
+
+}
+
+body{
+	background-color: #f6f2f2;
+}
+
+.Contacts{
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  padding: 20px 30px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  	background-image: linear-gradient(to right, #ff2d2d 0%, #000000 51%, #ff2d2d 100%);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  transition: .5s;
+ }
+
+.Contacts:hover {
+  background-position: right center;
+}
+
+a{
+	color:white;
+}
