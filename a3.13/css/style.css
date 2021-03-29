@@ -87,7 +87,7 @@ h2 {
 	
 }
 
-body{
+body {
 	background-color: #f6f2f2;
 }
 
@@ -194,6 +194,11 @@ footer div{
 		width: 100%
 	}
 }
+
+.feature{
+	margin: 50px;
+	padding: 50px;
+}
 .feature-description{
 	display: flex;
 	flex-wrap: wrap;
@@ -247,35 +252,59 @@ footer div{
 	margin-bottom: 18px;
 	object-fit: cover;
 }
-
-.team-wrap{
+.teams{
+	margin: 50px;
+	padding: 50px;
+}
+.teams-wrap{
 	display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
     "team__leader team__lead-description"
     "team__leader team-members"
+    
+
+
  }
 .team__leader{
 	flex-shrink: 0;
-	width: 200px;
-	height: 300px;
-	margin-right: 40px;
+	width: 326px;
+	height: 350px;
+	margin-right: 20px;
 	background-color: #eb6d4a8f;
-	align-self: start;
+	align-self: center;
 	grid-area: team__leader; 
 }
 .team__filter{
 color: black;
+display: flex;
+flex-direction: row;
 }
+
+.teams-social{
+color: black;
+padding: 10px;
+text-decoration: none;
+
+}
+
+
 .team__lead-description{
 	grid-area: team__lead-description;
+}
+
+.team__leader_uppercase{
+	text-transform: uppercase;
 }
 
 .team-members{
 	grid-area: team-members;
 	display: flex;
 	flex-wrap: wrap;
-	
+	justify-content: space-around;
+}
 
+.email__wrap{
+	background-color: #FFFFFF;
 }
