@@ -1,4 +1,4 @@
-from cat import Cat
+from cat import Cat, Client, Guests
 
 sam = Cat('Сэм')
 sam.set_age(2)
@@ -13,3 +13,15 @@ for i in sam, baron:
     print(f'Возраст {i.get_age()}')
     print(f'Пол {i.get_gender()}')
     print(f'Вид животного {i.kind}')
+
+egor=Client('Егор Егоров', 100)
+pavel=Client('Павлов Павел')
+
+egor.get_balance()
+pavel.get_balance()
+
+serega=Guests('Гендальф Серый')
+serega.set_city('Moria')
+serega.set_status('Белый Маг')
+
+serega.info()
