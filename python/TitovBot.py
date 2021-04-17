@@ -46,10 +46,11 @@ def lanta_prossesing(message, number_lanta):
 @bot.message_handler(content_types=['text', 'audio'])
 def handle_lanta(message):
     try:
+        print(message)
         number_lanta = int(message.text)
         if message.chat.id in AUTH:
             bot.reply_to(message, f'Вы идентифицированы')
-            bot.send_message(message.chat.id, f'Привет {message.chat.username}')
+            bot.send_message(message.chat.id, f'Привет {message.chat.first_name} {message.chat.last_name}')
             if number_lanta in printers:
                 bot.send_message(message.chat.id, 'Номер найден.')
                 model = printers[number_lanta]['Модель']
@@ -60,7 +61,7 @@ def handle_lanta(message):
                 bot.send_message(message.chat.id, 'Можете использовать серийник через команду /sn')
 
         else:
-            bot.send_message(message.chat.id, f'Доступ запрещен, для доступа')
+            bot.send_message(message.chat.id, f'{message.chat.first_name} доступ запрещен, для доступа')
             bot.send_message(message.chat.id, f'Обратитесь к Жеке, ваш id {message.chat.id}')
             print('Пользователь без аунтицфикации')
             print(message.chat.username)
