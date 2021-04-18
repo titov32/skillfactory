@@ -22,7 +22,9 @@ def printer_markup(base=None):
 # Обрабатываются все сообщения содержащие команды '/start' or '/help'.
 @bot.message_handler(commands=['start', 'help'])
 def handle_start_help(message):
-    bot.reply_to(message, f'ответ на {message.text}')
+    text = 'Для получения по принтерам нужно ввести номер Ланты сервис без нулей \
+           поиск по серийнику в данный момент недоступен, напишите если он нужен'
+    bot.reply_to(message, text)
 
 
 @bot.message_handler(commands=['sn'])
@@ -69,5 +71,5 @@ def handle_lanta(message):
     except ValueError:
         bot.send_message(message.chat.id, help_bot)
 
+bot.polling(non_stop = False)
 
-bot.polling(none_stop=True)
