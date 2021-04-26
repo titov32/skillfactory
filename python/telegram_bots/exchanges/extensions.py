@@ -40,7 +40,7 @@ class Converter:
         return rate
 
     @staticmethod
-    def check_val(raw_in_val:str, raw_out_val:str):
+    def check_val(raw_in_val:str, raw_out_val:str, raw_sum:str):
         try:
             in_val = exchanges[raw_in_val.lower()]
         except KeyError:
@@ -51,12 +51,18 @@ class Converter:
             raise APIException(f'Валюты {raw_out_val} не найдено')
         if in_val==out_val:
             raise APIException('Попробуй разные валюты')
-        return in_val, out_val
+        try:
+            print(type(raw_sum))
+            sum=raw_sum.replace(',', '.')
+            sum=float(sum)
+        except ValueError:
+            raise APIException('Введите корректную сумму')
+        return in_val, out_val, sum
 
     @staticmethod
-    def get_price(raw_in_val: str, raw_out_val: str, sum=1):
+    def get_price(raw_in_val: str, raw_out_val: str, raw_sum:str):
         #проверяем корректность на ошибки
-        in_val, out_val = Converter.check_val(raw_in_val, raw_out_val)
+        in_val, out_val, sum= Converter.check_val(raw_in_val, raw_out_val, raw_sum)
         # проверяем свежесть данных если старше 20 минут то запршиваем заново, если нет берем из кэша
         if not redis_conn.get('time'):
             rate = Converter.set_val()
@@ -79,7 +85,7 @@ class Converter:
 # test Converter
 a = Converter()
 print('Цена 1000 Евро в рублях')
-print(a.get_price('ЕВРО', 'рубль', 1000))
+print(a.get_price('ЕВРО', 'рубль', '1000'))
 
 print('Цена 1000 долларов в рублях')
-print(a.get_price('доллар', 'рубль', 1000))
+print(a.get_price('доллар', 'рубль', '1000'))
