@@ -81,11 +81,11 @@ class Converter:
                 in_val == 'USD' and out_val == 'RUB':
             return rate[out_val] / rate[in_val] * sum
 
+if __name__=='main':
+    # test Converter
+    a = Converter()
+    print('Цена 1000 Евро в рублях')
+    print(a.get_price('ЕВРО', 'рубль', '1000'))
 
-# test Converter
-a = Converter()
-print('Цена 1000 Евро в рублях')
-print(a.get_price('ЕВРО', 'рубль', '1000'))
-
-print('Цена 1000 долларов в рублях')
-print(a.get_price('доллар', 'рубль', '1000'))
+    print('Цена 1000 долларов в рублях')
+    print(a.get_price('доллар', 'рубль', '1000'))

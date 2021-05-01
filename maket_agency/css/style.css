@@ -96,10 +96,9 @@ body {
   display: inline-block;
   color: white;
   padding: 20px 30px;
-  
   border-radius: 10px;
   text-transform: uppercase;
-  	background-image: linear-gradient(to right, #ff2d2d 0%, #000000 51%, #ff2d2d 100%);
+  background-image: linear-gradient(to right, #ff2d2d 0%, #000000 51%, #ff2d2d 100%);
   background-size: 200% auto;
   box-shadow: 0 0 20px rgba(0, 0, 0, .1);
   transition: .5s;
@@ -169,19 +168,6 @@ color:red;
 	content: url('../img/animation.svg');
 }
 
-footer{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0px;
-	margin: 10px;
-	background: #000111;
-	color: white;
-}
-
-footer div{
-	margin:10px 170px 10px 170px;
-}
 
 @media (max-width:1150px){
 	.service-wrapper{
@@ -202,7 +188,6 @@ footer div{
 .feature-description{
 	display: flex;
 	flex-wrap: wrap;
-	
 	flex-direction: column;
 	align-content: center;
 }
@@ -305,6 +290,136 @@ text-decoration: none;
 	justify-content: space-around;
 }
 
+.email{
+	margin: 50px;
+	padding: 50px;
+}
+
 .email__wrap{
-	background-color: #FFFFFF;
+	background-color: #000111;
+	color:#FFFFFF;
+	height:  350px;	
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+
+}
+.email_head{
+	font-family: "Open Sans", Helvettica, Arial, sans-serif;
+	font-style: bold;
+	font-weight: 800;
+	font-size: 42px;
+}
+
+.email__input{
+margin: 40px;
+padding: 20px;
+padding-right: 124px;	
+border-radius: 5px;
+}
+
+.email__button{
+	text-decoration: none;
+  display: inline-block;
+  color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  background-image: linear-gradient(to right, #ff2d2d 0%, #000000 51%, #ff2d2d 100%);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  transition: .5s;
+}
+.feedback{
+	margin-left: 120px;
+}
+.feedback__wrap{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 107px;
+	margin: 50px;
+	padding: 50px;
+}
+
+.feedback__text{
+	max-width: 760px;
+}
+
+.feedback__head{
+	font-family: "Open Sans", Helvettica, Arial, sans-serif;
+	font-style: bold;
+	font-weight: 800;
+	font-size: 42px;
+	text-transform: uppercase;
+}
+
+.feedback__contacts{
+	display: flex;
+	flex-direction: row;
+}
+
+.feedback_form{
+	width: 798px;
+	margin-right: 104px;
+
+}
+
+.feedback__input{
+	margin-right: 13px;
+	width: 375px;
+	height: 71px;
+	background-color: #e5e5e5;
+	border-radius: 5px;
+
+}
+
+.feedback__input-text{
+	width: 98%;
+	height: 252px;
+	background-color: #e5e5e5;
+	margin-top: 45px;
+	border-radius: 10px;
+}
+
+
+.feedback__button{
+	 text-decoration: none;
+  display: inline-block;
+  color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  background-color: red;
+  width: 100%;
+  margin-top: 40px;
+}
+.feedback__about{
+	color: #111000;
+	background-color: #000111;
+	color:#FFFFFF;
+	height:  380px;	
+	display: flex;
+	flex-direction: column;
+	padding: 50px;
+}
+
+.feedback__about h3{
+	text-transform: uppercase;
+}
+
+
+footer{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px;
+	margin: 10px;
+	background: #000111;
+	color: white;
+}
+
+footer div{
+	margin:10px 10px 10px 170px;
 }
