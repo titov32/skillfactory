@@ -5,7 +5,6 @@ from django.db.models import Sum
 
 # Create your models here.
 class Author(models.Model):
-    name = models.CharField(max_length=128)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     ratingAuthor = models.SmallIntegerField(default=0)
 
@@ -14,10 +13,18 @@ class Author(models.Model):
         rating_post = self.post_set.all().aggregate(postRating=Sum('rating'))
         pRat = 0
         pRat = rating_post.get('postRating')
+        if not pRat:
+            pRat = 0
 
         comment_rating = self.user.comment_set.all().aggregate(commentRating=Sum('rating'))
         cRat = 0
         cRat = comment_rating.get('commentRating')
+        if not cRat:
+            cRat = 0
+
+        self.ratingAuthor = pRat * 3 + cRat
+        self.save()
+
 
 class Category(models.Model):
     category = models.CharField(max_length=64, unique=True)
@@ -28,7 +35,7 @@ class Post(models.Model):
     ARTICLE = 'AR'
     MATERIAL_CHOICES = [
         (NEWS, 'Новость'),
-        (ARTICLE, 'Статья'), 
+        (ARTICLE, 'Статья'),
     ]
     material = models.CharField(
         max_length=7,
