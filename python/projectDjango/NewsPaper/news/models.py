@@ -8,6 +8,9 @@ class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     ratingAuthor = models.SmallIntegerField(default=0)
 
+    def __str__(self):
+        return self.user.username
+
     # собираем все связанные посты с автором, применяем к нему метод aggregate и высчитваем сумму по полю 'rating'
     def update_rating(self):
         rating_post = self.post_set.all().aggregate(postRating=Sum('rating'))
@@ -29,6 +32,9 @@ class Author(models.Model):
 class Category(models.Model):
     category = models.CharField(max_length=64, unique=True)
 
+    def __str__(self):
+        return self.category
+
 
 class Post(models.Model):
     NEWS = 'NW'
@@ -49,6 +55,9 @@ class Post(models.Model):
     # связь многие ко многим, один пост может иметь много категорий и
     # одна категория может иметь много постов
     postCategory = models.ManyToManyField(Category, through='PostCategory')
+
+    def __str__(self):
+        return f'{self.title}:{self.text[:20]}'
 
     def like(self):
         self.rating += 1
@@ -74,6 +83,9 @@ class Comment(models.Model):
     text = models.TextField()
     time = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.user.username, ' ', self.text[:20]
 
     def like(self):
         self.rating += 1
