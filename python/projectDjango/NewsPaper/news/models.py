@@ -9,7 +9,7 @@ class Author(models.Model):
     ratingAuthor = models.SmallIntegerField(default=0)
 
     def __str__(self):
-        return self.user.username
+        return f'self.user.username'
 
     # собираем все связанные посты с автором, применяем к нему метод aggregate и высчитваем сумму по полю 'rating'
     def update_rating(self):
@@ -33,7 +33,7 @@ class Category(models.Model):
     category = models.CharField(max_length=64, unique=True)
 
     def __str__(self):
-        return self.category
+        return f'self.category'
 
 
 class Post(models.Model):
@@ -85,7 +85,7 @@ class Comment(models.Model):
     rating = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.user.username, ' ', self.text[:20]
+        return f' self.user.username,  self.text[:20]'
 
     def like(self):
         self.rating += 1
