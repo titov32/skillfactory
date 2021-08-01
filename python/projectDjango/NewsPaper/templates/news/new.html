@@ -11,7 +11,13 @@
     <h1>{{post.title}} </h1>
 <i> Автор новости {{post.author.user.username}}</i>
         <br>
-    {{ post }}
+        <span> Дата публикации {{post.timeCreation}} </span>
+        <br>
+        {{ post.text }}
+        <br>
+        <span>
+        Автор поста {{ post.author.user.username }}
+        </span>
 
 
 
