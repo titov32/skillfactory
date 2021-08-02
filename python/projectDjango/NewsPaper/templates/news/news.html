@@ -9,10 +9,10 @@
     <div class="container">
     <div class="text-left mt-5">
     <h1>Все новости </h1>
-
+    {% load custom_filters %}
     {% if posts %}
         {% for post in posts %}
-            {{ post.title }}  {{ post.timeCreation |date:'d M Y'}} {{ post.text | truncatechars:50 }}
+            {{ post.title |censor }}  {{ post.timeCreation |date:'d M Y h:m'}} {{ post.text | truncatechars:50 |censor }}
             <br>
         {% endfor %}
         {% else %}
