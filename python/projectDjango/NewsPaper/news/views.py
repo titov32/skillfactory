@@ -13,6 +13,7 @@ class PostsList(ListView):
     # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов через html-шаблон
     context_object_name = 'posts'
     queryset = Post.objects.order_by('-timeCreation')
+    paginate_by = 2
 
 class PostDetail(DetailView):
 
