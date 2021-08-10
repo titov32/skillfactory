@@ -64,5 +64,9 @@ class PostsSearch(ListView):
 
 
 class PostCreateView(CreateView):
+    model = Post
     template_name = 'news/create_news.html'
     form_class = PostForm
+    success_url = '/news/'
+
+
