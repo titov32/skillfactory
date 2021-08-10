@@ -1,9 +1,10 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Post
 from .filters import PostFilter # импортируем недавно написанный фильтр
+from .forms import PostForm # импортируем нашу форму
 
 
 class PostsList(ListView):
@@ -17,11 +18,21 @@ class PostsList(ListView):
     context_object_name = 'posts'
     queryset = Post.objects.order_by('-timeCreation')
     paginate_by = 2
+    form_class = PostForm
 
     def get_context_data(self, **kwargs): # забираем отфильтрованные объекты переопределяя метод get_context_data у наследуемого класса (привет полиморфизм, мы скучали!!!)
         context = super().get_context_data(**kwargs)
         context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset()) # вписываем наш фильтр в контекст
+        context['form'] = PostForm()
         return context
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)  # создаём новую форму, забиваем в неё данные из POST запроса
+
+        if form.is_valid():  # если пользователь ввёл всё правильно и нигде не накосячил то сохраняем новый товар
+            form.save()
+
+        return super().get(request, *args, **kwargs)
 
 class PostDetail(DetailView):
     # указываем модель, объекты которой мы будем выводить
@@ -50,3 +61,8 @@ class PostsSearch(ListView):
         context = super().get_context_data(**kwargs)
         context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset()) # вписываем наш фильтр в контекст
         return context
+
+
+class PostCreateView(CreateView):
+    template_name = 'news/create_news.html'
+    form_class = PostForm
