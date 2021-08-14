@@ -10,15 +10,13 @@
     <div class="text-center mt-5">
         {% load custom_filters %}
     <h1>{{post.title | censor}} </h1>
-<i> Автор новости {{post.author.user.username}}</i>
+        <h3>  <i> Автор поста {{post.author.user.username}}</i> </h3>
+
         <br>
         <span> Дата публикации {{post.timeCreation |date:'d M Y h:m'}} </span>
         <br>
         {{ post.text | censor }}
         <br>
-        <span>
-        Автор поста {{ post.author.user.username }}
-        </span>
 
 
 

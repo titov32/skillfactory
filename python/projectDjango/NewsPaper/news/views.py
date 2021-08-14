@@ -56,8 +56,7 @@ class PostsSearch(ListView):
     # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов
     # через html-шаблон
     context_object_name = 'posts'
-    ordering = ['author']
-    queryset = Post.objects.order_by('-timeCreation')
+    ordering = ['-timeCreation', 'author']
     paginate_by = 3
 
     def get_filter(self):
@@ -77,7 +76,6 @@ class PostCreateView(CreateView):
     model = Post
     template_name = 'news/create_news.html'
     form_class = PostForm
-    success_url = '/news/'
 
 
 class PostsUpdate(UpdateView):
