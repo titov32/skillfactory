@@ -16,7 +16,7 @@
 <h1>Все новости </h1>
 {% load custom_filters %}
 {% if posts %}
-    {% for post in filter.qs %}
+    {% for post in posts %}
         <a href="{% url 'post_detail' post.id %}">{{ post.title|censor }}</a>
         <br>
         {{ post.title |censor }}  {{ post.timeCreation |date:'d M Y h:m'}} {{ post.text | truncatechars:200 |censor }}

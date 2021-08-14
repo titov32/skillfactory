@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Post
 from .filters import PostFilter # импортируем недавно написанный фильтр
 from .forms import PostForm # импортируем нашу форму
+from django.core.paginator import  Paginator
 
 
 class PostDetail(DetailView):
@@ -55,14 +56,21 @@ class PostsSearch(ListView):
     # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов
     # через html-шаблон
     context_object_name = 'posts'
+    ordering = ['author']
     queryset = Post.objects.order_by('-timeCreation')
-    paginate_by = 2
+    paginate_by = 3
 
-    def get_context_data(self, **kwargs): # забираем отфильтрованные объекты переопределяя метод get_context_data у наследуемого класса (привет полиморфизм, мы скучали!!!)
-        context = super().get_context_data(**kwargs)
-        context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset()) # вписываем наш фильтр в контекст
-        context['form'] = PostForm()
-        return context
+    def get_filter(self):
+        return PostFilter(self.request.GET, queryset=super().get_queryset())
+
+    def get_queryset(self):
+        return self.get_filter().qs
+
+    def get_context_data(self, *args, **kwargs):
+        return {
+            **super().get_context_data(*args, **kwargs),
+            "filter": self.get_filter(),
+        }
 
 
 class PostCreateView(CreateView):

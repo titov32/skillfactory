@@ -8,7 +8,8 @@ class PostFilter(FilterSet):
     class Meta:
         model = Post
         fields = {
-            'title': ['icontains'], # мы хотим чтобы нам выводило имя хотя бы отдалённо похожее на то что запросил пользователь
-            'timeCreation': ['gt'], # количество товаров должно быть больше или равно тому, что указал пользователь
-            'text': ['icontains'], # цена должна быть меньше или равна тому, что указал пользователь
+            'title': ['icontains'],
+            'timeCreation': ['gt'],
+            'text': ['icontains'],
+            'author': ['lt'],
         }
