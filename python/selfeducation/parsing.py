@@ -9,24 +9,25 @@ from bs4 import BeautifulSoup
 session = requests.Session()
 
 # ссылка для ввода логина пароля, можно посмотреть через сеть в браузере
-link = 'https://'
+link = 'http://portal.stryservice.net/auth'
 
 user = fake_useragent.UserAgent().random
 
 header = {
-	'user-agent':user
+	'user-agent': user
 }
 
 # поля запроса можно посмотреть что передает браузер в запросе
 data = {
-	'req_username':'lesson_test'
-	'req_password': 'p@$$w0rd'
+	'login': 'e.titov',
+	'domain': 'SHAHTA12',
+	'password' : '47tit_evg'
 }
 
 responce = session.post(link, data=data, headers=header)
 
 # ссылка для проверки авторизации
-profile_info = 'https://'
+profile_info = 'http://portal.stryservice.net/profile'
 profile_responce = session.get(profile_info, headers=header).text
 print(profile_responce)
 
