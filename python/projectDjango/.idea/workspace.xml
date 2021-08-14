@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f91a36dc-f7bb-40d7-8c82-1aac58e637e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/NewsPaper/templates/news/delete_news.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NewsPaper/templates/news/pagination.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPaper/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPaper/news/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/news/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPaper/news/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/news/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPaper/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/news/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPaper/templates/flatpages/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/templates/flatpages/default.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPaper/templates/news/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/templates/news/news.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPaper/templates/news/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/templates/news/search.html" afterDir="false" />
-    </list>
+    <list default="true" id="f91a36dc-f7bb-40d7-8c82-1aac58e637e6" name="Default Changelist" comment="Added style bootstrapp for templates and worked templates update_news.html, delete_news.html&#10;pagination.html excluded from templates. It template include with rules djnago to templates search.html and news.html" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,6 +55,14 @@
       <option name="presentableId" value="Default" />
       <updated>1627797845079</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added style bootstrapp for templates and worked templates update_news.html, delete_news.html&#10;pagination.html excluded from templates. It template include with rules djnago to templates search.html and news.html">
+      <created>1628929447509</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1628929447509</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -79,5 +76,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added style bootstrapp for templates and worked templates update_news.html, delete_news.html&#10;pagination.html excluded from templates. It template include with rules djnago to templates search.html and news.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added style bootstrapp for templates and worked templates update_news.html, delete_news.html&#10;pagination.html excluded from templates. It template include with rules djnago to templates search.html and news.html" />
   </component>
 </project>
