@@ -11,44 +11,25 @@
     <input type="submit" value="Найти">
 </form>
 </div>
-    <div class="container">
-    <div class="text-left mt-5">
-    <h1>Все новости </h1>
-    {% load custom_filters %}
-    {% if posts %}
-        {% for post in filter.qs %}
-            {{ post.title |censor }}  {{ post.timeCreation |date:'d M Y h:m'}} {{ post.text | truncatechars:200 |censor }}
-            <br>
-        {% endfor %}
-        {% else %}
-            <h2> Новостей нет</h2>
-    {% endif %}
-      </div>
-    </div>
-
-    <div class="container">
-{% if is_paginated %}
-
-    {% if page_obj.has_previous %}
-        <a href="?page=1">First</a>
-        <a href="?page={{ page_obj.previous_page_number }}"><<<</a>
-    {% endif %}
-
-    {% for num in page_obj.paginator.page_range %}
-        {% if page_obj.number == num %}
-            <a>{{ num }}</a>
-        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-            <a href="?page={{ num }}">{{ num }}</a>
-        {% endif %}
+<div class="container">
+<div class="text-left mt-5">
+<h1>Все новости </h1>
+{% load custom_filters %}
+{% if posts %}
+    {% for post in filter.qs %}
+        <a href="{% url 'post_detail' post.id %}">{{ post.title|censor }}</a>
+        <br>
+        {{ post.title |censor }}  {{ post.timeCreation |date:'d M Y h:m'}} {{ post.text | truncatechars:200 |censor }}
+    <a class="nav-link active" aria-current="page" href="/news/{{post.pk}}">Подробнее</a>
+        <br>
     {% endfor %}
-
-    {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">>>></a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-    {% endif %}
-
+    {% else %}
+        <h2> Новостей нет</h2>
 {% endif %}
+  </div>
 </div>
+
+{% include 'news/pagination.html' %}
 
 
 

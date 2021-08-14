@@ -1,0 +1,20 @@
+{% extends 'flatpages/default.html' %}
+{% block title %}
+Все новости
+{% endblock title %}
+{% block content %}
+<div class="container">
+    <h2>Вы действительно хотите удалить данный пост?</h2>
+    <br>
+                {{ post.title|title }}
+    <br>
+                {{ post.category.category|title }}
+    <br>
+                {{ post.rating }}
+    <br>
+                {{ post.text }}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="подтвердить"></form>
+</div>
+{% endblock content %}
