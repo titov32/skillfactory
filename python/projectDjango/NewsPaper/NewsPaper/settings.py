@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     # подключаем ещё приложения
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'sign',
+    'protect',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +122,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL = 'sign/login/'
+
+LOGIN_REDIRECT_URL = '/'
 
 SITE_ID = 1
 # Static files (CSS, JavaScript, Images)
