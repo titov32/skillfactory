@@ -1,10 +1,8 @@
-
 {% extends 'base.html' %}
-{% block title%} Печать пропуска {% endblock %}
+{% block title%} нет ссылки {% endblock %}
 
 
 {% block content %}
-{% include 'permit_base.j2' %}
 <div class="form">
         <form action="" method="post">
         <p>
@@ -17,7 +15,7 @@
     </form>
 </div>
 
+<h3> <b> Необходимо вставить ссылку для поиска пропуска </b> </h3>
+<img class="" src="static/img/template_url.png">
 <a href="/parse_unbound"> Печать не привязанных в скуде</a>
-<a href="/parse_unbound_one_permit"> Выбор из не привязанных в скуде </a>
-
 {% endblock %}

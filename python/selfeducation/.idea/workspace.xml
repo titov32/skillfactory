@@ -2,34 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40dd79fc-483e-4628-8739-060e037b766b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/102506.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/102803.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/102808.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/103542.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/106481.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/107592.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/107599.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/123.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/1297.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/13225.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/13411.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/1528.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/1673.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/97733.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/97735.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/img/s12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/listpermit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/permit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/permits.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/template_url.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookies" beforeDir="false" afterPath="$PROJECT_DIR$/cookies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flsite.py" beforeDir="false" afterPath="$PROJECT_DIR$/flsite.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parsing.py" beforeDir="false" afterPath="$PROJECT_DIR$/parsing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/123.htm" beforeDir="false" afterPath="$PROJECT_DIR$/templates/123.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/permit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/permit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/permit_base.j2" beforeDir="false" afterPath="$PROJECT_DIR$/templates/permit_base.j2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/permits.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/permits.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,6 +144,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

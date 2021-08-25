@@ -48,7 +48,7 @@ class ParserSS:
             print(f'Проблемы! Ошибка регистрации {e}')
 
     def parse_employ(self, id_user):
-        context_permit = {'id_user':id_user}
+        context_permit = {'id':id_user}
         profile_info = 'http://portal.stryservice.net/guides/users/show?id='+id_user
         profile_response = self.session.get(profile_info, headers=self.header).text
 
@@ -62,7 +62,8 @@ class ParserSS:
         special = employ.find_all(class_='text-muted mb-0')[0].text
         context_permit['special'] = special
         department = employ.find_all(class_='text-muted mb-0 hide-on-hover-parent')[0].text
-        context_permit['department'] = department
+        context_permit['department'] = department[18:]
+        context_permit['organisation'] = department[:18]
 
         fio1 = employ.text
 
@@ -113,16 +114,18 @@ if __name__ == "__main__":
     a = ParserSS()
     a.register()
 
-    employ = a.parse_employ('97733')
+    employ = a.parse_employ('107614')
     print('Фамилия', employ['family'])
     print('special', employ['special'])
     print('tabel', employ['tabel'])
-
-    list_id = a.parse_skud()
+    print('department', employ['department'])
+"""     list_id = a.parse_skud()
     for i in list_id:
         employ = a.parse_employ(i)
         if employ:
             print('Фамилия', employ['family'])
             print('special', employ['special'])
             print('tabel', employ['tabel'])
+            print('department', employ['department'])
+"""
 # https://www.youtube.com/watch?v=IEfQLbxHY_g&list=PL6plRXMq5RACy7NhEK4tdLeKxmKmxDIrr&index=8&ab_channel=ZProger%5BIT%5D

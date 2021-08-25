@@ -1,7 +1,7 @@
 <div class="permit">
   <div class="permit-upper">
       <div class="permit-foto">
-        <img class="permit-image" src="static/img/{{employ.foto}}">
+        <img class="permit-image" src="/static/img/{{employ.foto}}">
       </div>
   <div class="permit-fio">
     <div class="permit-label"> <img class="permit-label" src="{{ url_for ('static', filename='img/s12.png')}}"></div>
@@ -17,10 +17,10 @@
 
   <div class="permit-footer">
     <div class="permit-footer-div">
-      <span class="permit-footer-text"> {{employ.department}}</span><br>
+      <span class="permit-footer-text"><b> {{employ.department}}</b> </span><br>
     </div>
     <div class="permit-footer-div">
-      <span class="permit-footer-text">{{employ.special}}</span>
+      <span class="permit-footer-text"><b>Должность</b>: {{employ.special}}</span>
     </div>
     
     

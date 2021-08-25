@@ -2,11 +2,13 @@
     width: 90 px;
     height: 120px;
 }
-
+span {
+  font-size:  small;
+}
 .permit{
   display: inline-block;
-  width: 390px;
-  height: 257px;
+  width: 410px;
+  height: 220px;
 
   color: black;
   padding: 0px;
@@ -32,11 +34,14 @@
 
 }
 
+h3 {
+  color: red;
+}
 
 .permit-image {
     height: 135px;
     width: 98px;
-    margin-top: 0px;
+    margin-top: -2px;
     margin-left: 0px;
     object-fit: cover;
 }
@@ -48,6 +53,7 @@
 .permit-employ{
   padding: 0;
   padding-left: 20px;
+  margin-top: -22px;
 
 }
 .permit-employ-text{
