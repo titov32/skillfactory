@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, request
 from parsing import ParserSS
-
+from time import sleep
 app = Flask(__name__)
 title = 'offigne'
 menu = [{'name': 'Установка', 'url': 'install-flask'},
@@ -31,7 +31,6 @@ def contact():
 def parse():
     if request.method == 'POST':
         print(request.form)
-        print(request.form.get('url_parsing'), 'test url')
     a = ParserSS()
     a.register()
     try:
@@ -46,8 +45,27 @@ def parse():
     e = a.parse_employ(id_user)
     print('Фамилия', e['family'])
     print('special', e['special'])
+    print('department', e['department'])
     print('tabel', e['tabel'])
-    return render_template('123.htm', e=e)
+    return render_template('permit.html', employ=e)
+
+
+@app.route('/parse_unbound', methods=['GET','POST'])
+def parse_unbound():
+    if request.method == 'POST':
+        print(request.form)
+    a = ParserSS()
+    a.register()
+    list_id_unbound = a.parse_skud()
+    employs = []
+    for id_user in list_id_unbound:
+        e = a.parse_employ(id_user)
+        if e:
+            employs.append(e)
+        sleep(0.3)
+        print(id_user)
+    print(employs)
+    return render_template('permits.html', employs=employs)
 
 
 if __name__ == '__main__':

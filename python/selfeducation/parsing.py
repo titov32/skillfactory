@@ -48,14 +48,14 @@ class ParserSS:
             print(f'Проблемы! Ошибка регистрации {e}')
 
     def parse_employ(self, id_user):
-        context_permit = {}
+        context_permit = {'id_user':id_user}
         profile_info = 'http://portal.stryservice.net/guides/users/show?id='+id_user
         profile_response = self.session.get(profile_info, headers=self.header).text
 
         soup_employ = BeautifulSoup(profile_response, 'lxml')
         block1 = soup_employ.find_all("div",
-                                      class_="d-flex flex-column align-items-center justify-content-center p-4 show-child-on-hover hide-child-on-hover")[
-            0]
+                                      class_="d-flex flex-column align-items-center justify-content-center p-4 "
+                                             "show-child-on-hover hide-child-on-hover")[0]
 
         employ = block1.find('h5', class_='mb-0 fw-700 text-center mt-3')
 
@@ -75,16 +75,38 @@ class ParserSS:
         context_permit['patronymic'] = list2[2][:-1]
 
         block2 = soup_employ.find_all("div",
-                                      class_="card-body py-0 px-4 border-faded border-right-0 border-bottom-0 border-left-0 pt-4")[
-            0]
+                                      class_="card-body py-0 px-4 border-faded border-right-0 border-bottom-0 "
+                                             "border-left-0 pt-4")[0]
         tabel_number = block2.find('dd', class_='col-sm-9').text
         context_permit['tabel'] = tabel_number
-        block_image = block1.find('a', class_='js-highslide').get('href')
-        context_permit['foto'] = self.url+block_image
+        try:
+            block_image = block1.find('a', class_='js-highslide').get('href')
+            image_bytes = requests.get(f'{self.url}{block_image}').content
+            with open(f'static/img/{id_user}.jpg', 'wb') as file:
+                file.write(image_bytes)
+        except AttributeError:
+            print('Foto no exist')
+            block_image=None
+            return None
+
+        context_permit['foto'] = f'{id_user}.jpg'
         print(block_image)
 
         return context_permit
 
+    def parse_skud(self):
+        list_id_employ = []
+        link = self.url + '/guides/tools/skud?q=&company=3&type=unbound_skud'
+        skud_response = self.session.get(link, headers=self.header).text
+        soup_employ = BeautifulSoup(skud_response, 'lxml')
+        div_table = soup_employ.find_all('div', class_='card-body container-fluid')[0]
+        block1 = div_table.find_all("table", class_="table table-sm table-hover mt-3")[0]
+        employs = block1.find_all('a')
+        for e in employs:
+            id_user = e.get('href').split('id=')[-1]
+            list_id_employ.append(id_user)
+
+        return list_id_employ
 
 if __name__ == "__main__":
 
@@ -96,4 +118,11 @@ if __name__ == "__main__":
     print('special', employ['special'])
     print('tabel', employ['tabel'])
 
+    list_id = a.parse_skud()
+    for i in list_id:
+        employ = a.parse_employ(i)
+        if employ:
+            print('Фамилия', employ['family'])
+            print('special', employ['special'])
+            print('tabel', employ['tabel'])
 # https://www.youtube.com/watch?v=IEfQLbxHY_g&list=PL6plRXMq5RACy7NhEK4tdLeKxmKmxDIrr&index=8&ab_channel=ZProger%5BIT%5D

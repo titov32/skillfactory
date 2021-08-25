@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 5.0 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 5.0 Transitional//EN">
 <HTML>
 <HEAD>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
@@ -60,6 +60,10 @@ td { padding: 0px; padding-left: 2px; overflow:hidden; }
 </STYLE>
 </HEAD>
 <BODY STYLE="background: #ffffff; margin: 0; font-family: Arial; font-size: 8pt; font-style: normal; ">
+
+{% for employ in employs %}
+<div class="permit">
+
 <TABLE style="width:100%; height:0px; " CELLSPACING=0>
 <COL WIDTH=5>
 <COL WIDTH=45>
@@ -145,7 +149,7 @@ td { padding: 0px; padding-left: 2px; overflow:hidden; }
 <TD CLASS="R4C3"><SPAN></SPAN></TD>
 <TD CLASS="R4C2"><SPAN></SPAN></TD>
 <TD CLASS="R4C5"><SPAN STYLE="white-space:nowrap;max-width:0px;">Ф.</SPAN></TD>
-<TD CLASS="R4C6" COLSPAN=5><SPAN STYLE="white-space:nowrap;max-width:0px;">{{e.family}}</SPAN></TD>
+<TD CLASS="R4C6" COLSPAN=5><SPAN STYLE="white-space:nowrap;max-width:0px;">{{employ.family}}</SPAN></TD>
 <TD CLASS="R4C11"><SPAN></SPAN></TD>
 <TD><SPAN></SPAN></TD>
 <TD></TD>
@@ -157,7 +161,7 @@ td { padding: 0px; padding-left: 2px; overflow:hidden; }
 <TD CLASS="R4C3"><SPAN></SPAN></TD>
 <TD CLASS="R4C2"><SPAN></SPAN></TD>
 <TD CLASS="R4C5"><SPAN STYLE="white-space:nowrap;max-width:0px;">И.</SPAN></TD>
-<TD CLASS="R4C6" COLSPAN=5><SPAN STYLE="white-space:nowrap;max-width:0px;">{{e.name}}</SPAN></TD>
+<TD CLASS="R4C6" COLSPAN=5><SPAN STYLE="white-space:nowrap;max-width:0px;">{{employ.name}}</SPAN></TD>
 <TD CLASS="R4C11"><SPAN></SPAN></TD>
 <TD><SPAN></SPAN></TD>
 <TD></TD>
@@ -169,7 +173,7 @@ td { padding: 0px; padding-left: 2px; overflow:hidden; }
 <TD CLASS="R4C3"><SPAN STYLE="white-space:nowrap;max-width:0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;И.&nbsp;&nbsp;&nbsp;____АЛЕКСАНДР____</SPAN></TD>
 <TD CLASS="R4C2"><SPAN></SPAN></TD>
 <TD CLASS="R4C5"><SPAN STYLE="white-space:nowrap;max-width:0px;">О.</SPAN></TD>
-<TD CLASS="R4C6" COLSPAN=5><SPAN STYLE="white-space:nowrap;max-width:0px;">{{e.patronymic}}</SPAN></TD>
+<TD CLASS="R4C6" COLSPAN=5><SPAN STYLE="white-space:nowrap;max-width:0px;">{{employ.patronymic}}</SPAN></TD>
 <TD CLASS="R4C11"><SPAN></SPAN></TD>
 <TD><SPAN></SPAN></TD>
 <TD></TD>
@@ -181,21 +185,21 @@ td { padding: 0px; padding-left: 2px; overflow:hidden; }
 <TD CLASS="R7C3"><SPAN STYLE="white-space:nowrap;max-width:0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;О.&nbsp;&nbsp;&nbsp;____СЕРГЕЕВИЧ____</SPAN></TD>
 <TD CLASS="R4C2"><SPAN></SPAN></TD>
 <TD CLASS="R4C5" COLSPAN=2><SPAN STYLE="white-space:nowrap;max-width:0px;">Таб.&nbsp;№&nbsp;</SPAN></TD>
-<TD CLASS="R4C6" COLSPAN=4 STYLE="border-right: #333333 1px solid; "><SPAN STYLE="white-space:nowrap;max-width:0px;">{{e.tabel}}</SPAN></TD>
+<TD CLASS="R4C6" COLSPAN=4 STYLE="border-right: #333333 1px solid; "><SPAN STYLE="white-space:nowrap;max-width:0px;">{{employ.tabel}}</SPAN></TD>
 <TD CLASS="R7C11"><SPAN></SPAN></TD>
 <TD><SPAN></SPAN></TD>
 <TD></TD>
 </TR>
 <TR CLASS=R8>
 <TD CLASS="R8C0"><DIV STYLE="position:relative; height:20px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV></TD>
-<TD CLASS="R8C1" COLSPAN=10><SPAN STYLE="white-space:nowrap;max-width:0px;">{{e.department}}</SPAN></TD>
+<TD CLASS="R8C1" COLSPAN=10><SPAN STYLE="white-space:nowrap;max-width:0px;">{{employ.department}}</SPAN></TD>
 <TD CLASS="R8C11"><DIV STYLE="position:relative; height:20px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV></TD>
 <TD><DIV STYLE="position:relative; height:20px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV></TD>
 <TD><DIV STYLE="width:100%;height:20px;overflow:hidden;"></DIV></TD>
 </TR>
 <TR CLASS=R9>
 <TD CLASS="R9C0"><DIV STYLE="position:relative; height:25px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV></TD>
-<TD CLASS="R9C1" COLSPAN=10 ROWSPAN=2>Должность: {{e.special}}</TD>
+<TD CLASS="R9C1" COLSPAN=10 ROWSPAN=2>Должность: {{employ.special}}</TD>
 <TD CLASS="R9C11"><DIV STYLE="position:relative; height:25px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV></TD>
 <TD><DIV STYLE="position:relative; height:25px;width: 100%; overflow:hidden;"><SPAN></SPAN></DIV></TD>
 <TD><DIV STYLE="width:100%;height:25px;overflow:hidden;"></DIV></TD>
@@ -223,6 +227,8 @@ td { padding: 0px; padding-left: 2px; overflow:hidden; }
 <TD><DIV STYLE="width:100%;height:1px;overflow:hidden;">&nbsp;</DIV></TD>
 </TR>
 </TABLE>
+</div>
+{% endfor %}
 <div style="position:absolute;left:117px; top:-7px;"><svg baseProfile="full" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" height = "93px"  width = "245px" text-rendering="geometricPrecision">
 <defs>
 <clipPath id="R1_1">
@@ -257,9 +263,5 @@ td { padding: 0px; padding-left: 2px; overflow:hidden; }
 	</p>
     </form>
 </div>
-
-<br>
-
-<a href="{{parse_unbound}}"> Печать не привязанных в скуде</a>
 </BODY>
 </HTML>
