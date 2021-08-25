@@ -1,6 +1,16 @@
+"""
+Для работы нужно создать файл setting.py cо следующим содержимым
+USER = {
+            'login': 'имя_пользователя_при_входе_в_портал',
+            'domain': 'имя_домена',
+            'password': 'ваш_пароль'
+        }
+"""
+
 import requests
 from bs4 import BeautifulSoup
 import pickle
+from .setting import USER
 
 
 class ParserSS:
@@ -11,11 +21,7 @@ class ParserSS:
         self.header = {
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36'}
         self.cookies_dict = []
-        self.data = {
-            'login': 'e.titov',
-            'domain': 'SHAHTA12',
-            'password': '47tit_evg'
-        }
+        self.data = USER
 
     def auth(self):
         try:
