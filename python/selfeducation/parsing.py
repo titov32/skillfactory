@@ -10,7 +10,7 @@ USER = {
 import requests
 from bs4 import BeautifulSoup
 import pickle
-from .setting import USER
+from setting import USER
 
 
 class ParserSS:
