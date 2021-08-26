@@ -97,7 +97,6 @@ class ParserSS:
             return None
 
         context_permit['foto'] = f'{id_user}.jpg'
-        print(block_image)
 
         return context_permit
 
