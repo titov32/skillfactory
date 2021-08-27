@@ -6,7 +6,9 @@
 
   {% for employ in employs %}
       {% include 'permit_base.j2' %}
-
+    {% else %}
+    <b> Список пуст смотрите позднее </b>
+    <a href="/parse"> Вернуться назад </a>
   {% endfor %}
 
 

@@ -10,7 +10,7 @@ USER = {
 import requests
 from bs4 import BeautifulSoup
 import pickle
-from setting import USER
+from setting import USER, CONN_REDIS
 
 
 class ParserSS:
@@ -22,7 +22,7 @@ class ParserSS:
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36'}
         self.cookies_dict = []
         self.data = USER
-
+        self.connection = CONN_REDIS
     def auth(self):
         try:
             self.session = requests.Session()
@@ -113,6 +113,25 @@ class ParserSS:
             list_id_employ.append(id_user)
 
         return list_id_employ
+
+    def check_redis(self, id_user):
+        data={}
+        if self.connection.hgetall(id_user):
+            raw_data = self.connection.hgetall(id_user)
+            data['id_user'] = raw_data[b'id_user'].decode('utf8')
+            data['tabel'] = raw_data[b'tabel'].decode('utf8')
+            data['family'] = raw_data[b'family'].decode('utf8')
+            data['name'] = raw_data[b'name'].decode('utf8')
+            data['patronymic'] = raw_data[b'patronymic'].decode('utf8')
+            data['department'] = raw_data[b'department'].decode('utf8')
+            data['organisation'] = raw_data[b'organisation'].decode('utf8')
+            data['special'] = raw_data[b'special'].decode('utf8')
+            return data
+        else:
+            data = self.parse_employ(id_user)
+            self.connection.hmset(id_user, data)
+            return data
+
 
 if __name__ == "__main__":
 
