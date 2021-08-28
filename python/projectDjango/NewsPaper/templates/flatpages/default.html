@@ -39,9 +39,12 @@
         </nav>
         <main>
                   <!-- Page content-->
-                {% block content %}
-              
-                {% endblock content %}
+        {% block body %}
+            {% block content %}
+            {% endblock content %}
+        {% endblock body %}
+        {% block extra_body %}
+        {% endblock extra_body %}
             </div>
         </div>  
         </main>
