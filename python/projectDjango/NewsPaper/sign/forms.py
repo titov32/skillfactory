@@ -6,9 +6,9 @@ from django.contrib.auth.models import Group
 
 
 class BaseRegisterForm(UserCreationForm):
-    email = forms.EmailField(label = "Email")
-    first_name = forms.CharField(label = "Имя")
-    last_name = forms.CharField(label = "Фамилия")
+    email = forms.EmailField(label="Email")
+    first_name = forms.CharField(label="Имя")
+    last_name = forms.CharField(label="Фамилия")
 
     class Meta:
         model = User
@@ -17,7 +17,7 @@ class BaseRegisterForm(UserCreationForm):
                   "last_name",
                   "email",
                   "password1",
-                  "password2", )
+                  "password2",)
 
 
 class BasicSignupForm(SignupForm):
