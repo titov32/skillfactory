@@ -160,5 +160,18 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_FORMS = {'signup': 'sign.forms.BasicSignupForm',
-                 #'login': 'sign.forms.BasicSignupForm',
+                 'login':   'sign.forms.CustomLoginForm',
                  }
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        "APP": {
+            "client_id": "981265326618-hieaqer7oflbgsgg1jaov0m05j2fej0u.apps.googleusercontent.com",
+            "secret": "iho9Wi-vr1Et-ze5trN9H2i8",
+            "key": ""
+            }
+    }
+}
+SOCIALACCOUNT_FORMS  = {'signup': 'sign.socialforms.MyCustomSocialSignupForm',}

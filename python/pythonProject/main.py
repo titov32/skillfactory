@@ -1,6 +1,6 @@
 import pyodbc
 import pymssql
-server = '192.168.24.3'
+
 sql_query = """
 USE orion
 /*
@@ -41,12 +41,16 @@ select *,
 from #tmpRes
 where (NextStartTime > EndTime or NextStartTime is null) and EndTime is not null
 """
-
+server = '192.168.24.3'
 database = 'orion'
 username = 'sa'
 password = 'Miha_Artiom'
 port = '1434'
-cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER='+server+';PORT='+port+ ';DATABASE='+database+';UID='+username+';PWD='+ password)
+cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
+cnxn = pyodbc.connect("Driver={SQL Server Native Client 11.0};"
+                                   "Server="+server+";"
+                                   "Database="+database+";"
+                                   "Trusted_Connection=yes;")
 cursor=cnxn.cursor()
 cursor.execute(sql_query)
 print(cursor.fetchall())

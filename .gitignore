@@ -779,3 +779,9 @@ python/selfeducation/static/img/102803.jpg
 python/selfeducation/static/img/102506.jpg
 *.jpg
 python/selfeducation/setting.py
+python/projectDjango/venv/*
+python/projectDjango/venv/pyvenv.cfg
+python/pythonProject/.idea/workspace.xml
+python/selfeducation/.idea/workspace.xml
+python/pythonProject/testDB.py
+python/projectDjango/venv/pyvenv.cfg
