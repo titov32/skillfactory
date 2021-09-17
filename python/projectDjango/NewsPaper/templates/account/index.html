@@ -11,6 +11,8 @@
 {% if is_not_authors %}
 <button> <a href="sign/upgrade/"> Хочу стать автором!</a> </button>
 {% endif %}
+<br>
+<b> {{user.is_authenticated}} </b>
 
 <button> <a href="sign/logout/">Выйти</a> </button>
 {% endblock %}

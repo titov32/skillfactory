@@ -5,11 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f91a36dc-f7bb-40d7-8c82-1aac58e637e6" name="Default Changelist" comment="Added style bootstrapp for templates and worked templates update_news.html, delete_news.html&#10;pagination.html excluded from templates. It template include with rules djnago to templates search.html and news.html">
-      <change beforePath="$PROJECT_DIR$/.idea/projectDjango.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/projectDjango.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/NewsPaper/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/NewsPaper/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/NewsPaper/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/NewsPaper/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/accounts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsPaper/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/news/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/protect/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/protect/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/protect/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/protect/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/protect/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/protect/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/protect/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/accounts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/protect/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/sign/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/sign/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsPaper/templates/flatpages/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/templates/flatpages/default.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPaper/templates/protect/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/templates/protect/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/templates/protect/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/templates/account/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,11 +57,15 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/NewsPaper/accounts" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Evgeniy\Documents\GitHub\skillfactory\python\projectDjango\NewsPaper\templates\news" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\e.titov\Documents\GitHub\skillfactory\python\projectDjango\NewsPaper\templates\account" />
+      <recent name="C:\Users\e.titov\Documents\GitHub\skillfactory\python\projectDjango\NewsPaper\accounts" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

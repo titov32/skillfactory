@@ -2,10 +2,14 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+
+import news.models
 from .models import Post
 from .filters import PostFilter # импортируем недавно написанный фильтр
 from .forms import PostForm # импортируем нашу форму
-from django.core.paginator import  Paginator
+from django.core.paginator import Paginator
+from django.contrib.auth.mixins import PermissionRequiredMixin
+
 
 
 class PostDetail(DetailView):
@@ -31,6 +35,7 @@ class PostsList(ListView):
     queryset = Post.objects.order_by('-timeCreation')
     paginate_by = 4
     form_class = PostForm
+
 
     def get_context_data(self, **kwargs): # забираем отфильтрованные объекты переопределяя метод get_context_data у наследуемого класса (привет полиморфизм, мы скучали!!!)
         context = super().get_context_data(**kwargs)
@@ -72,13 +77,16 @@ class PostsSearch(ListView):
         }
 
 
-class PostCreateView(CreateView):
+class PostCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = ('news.add_post')
     model = Post
     template_name = 'news/create_news.html'
     form_class = PostForm
+    #news.models.Author = Post.author
 
 
-class PostsUpdate(UpdateView):
+class PostsUpdate(PermissionRequiredMixin, UpdateView):
+    permission_required = ('news.change_post')
     template_name = 'news/create_news.html'
     form_class = PostForm
 
@@ -88,7 +96,8 @@ class PostsUpdate(UpdateView):
         return Post.objects.get(pk=id)
 
 
-class PostsDelete(DeleteView):
+class PostsDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = ('news.delete_post')
     template_name = 'news/delete_news.html'
     queryset = Post.objects.all()
     success_url = '/news/'
