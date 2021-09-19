@@ -9,10 +9,10 @@
 <div> Здесь может содержаться персональная информация для каждого пользователя </div>
 
 {% if is_not_authors %}
-<button> <a href="sign/upgrade/"> Хочу стать автором!</a> </button>
+<button> <a href="upgrade/"> Хочу стать автором!</a> </button>
 {% endif %}
 <br>
 <b> {{user.is_authenticated}} </b>
 
-<button> <a href="sign/logout/">Выйти</a> </button>
+<button> <a href="accounts/logout/">Выйти</a> </button>
 {% endblock %}

@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     # подключаем ещё приложения
     'django.contrib.sites',
     'django.contrib.flatpages',
-    'sign',
     # подключаем модуль auth
     'allauth',
     'allauth.account',
@@ -158,8 +157,8 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-ACCOUNT_FORMS = {'signup': 'sign.forms.BasicSignupForm',
-                 'login':   'sign.forms.CustomLoginForm',
+ACCOUNT_FORMS = {'signup': 'accounts.forms.BasicSignupForm',
+                 'login':   'accounts.forms.CustomLoginForm',
                  }
 
 #SOCIALACCOUNT_FORMS  = {'signup': 'sign.socialforms.MyCustomSocialSignupForm'}
