@@ -47,7 +47,7 @@ class Post(models.Model):
         max_length=7,
         choices=MATERIAL_CHOICES,
         default='article')
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(Author, on_delete=models.CASCADE)
     timeCreation = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=128)
     text = models.TextField()

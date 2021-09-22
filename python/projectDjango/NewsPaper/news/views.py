@@ -82,7 +82,19 @@ class PostCreateView(PermissionRequiredMixin, CreateView):
     model = Post
     template_name = 'news/create_news.html'
     form_class = PostForm
-    #news.models.Author = Post.author
+
+    def form_valid(self, form):
+        """
+        это не помогло
+        Exception Type:	ValueError
+        Exception Value:
+        Cannot assign "<SimpleLazyObject: <User: titov322>>": "Post.created_by" must be a "Author" instance.
+        """
+        obj = form.save(commit=False)
+        obj.created_by = self.request.user
+        return super(PlaceFormView, self).form_valid(form)
+
+
 
 
 class PostsUpdate(PermissionRequiredMixin, UpdateView):

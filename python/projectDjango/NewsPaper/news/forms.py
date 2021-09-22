@@ -5,17 +5,22 @@ from .models import Post
 # Создаём модельную форму
 class PostForm(ModelForm):
     check_box = BooleanField(label='Уверены что запись надо добавить?')  # добавляем галочку, или же true-false поле
-    # в класс мета как обычно надо написать модель по которой будет строится форма и нужные нам поля. Мы уже делали что-то похожее с фильтрами.
 
     class Meta:
+
+
+
         model = Post
-        fields = ['material', 'author', 'title', 'text', 'postCategory', 'check_box']
+        fields = ['material',  'title', 'text', 'postCategory', 'check_box']
+
+#'created_by',
+
 
         widgets = {
             'material': Select(attrs={
                 'class': 'form-control'
             }),
-            'author': Select(attrs={
+            'created_by': Select(attrs={
                 'class': 'form-control'
             }),
             'title': TextInput(attrs={
