@@ -11,5 +11,5 @@ class PostFilter(FilterSet):
             'title': ['icontains'],
             'timeCreation': ['gt'],
             'text': ['icontains'],
-            'created_by': ['lt'],
+            'created_by': ['exact'],
         }
