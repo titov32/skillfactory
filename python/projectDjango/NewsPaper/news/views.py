@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 import news.models
-from .models import Post
+from .models import Post, Author, User
 from .filters import PostFilter # импортируем недавно написанный фильтр
 from .forms import PostForm # импортируем нашу форму
 from django.core.paginator import Paginator
@@ -90,9 +90,14 @@ class PostCreateView(PermissionRequiredMixin, CreateView):
         Exception Value:
         Cannot assign "<SimpleLazyObject: <User: titov322>>": "Post.created_by" must be a "Author" instance.
         """
+
         obj = form.save(commit=False)
-        obj.created_by = self.request.user
-        return super(PlaceFormView, self).form_valid(form)
+        user = self.request.user
+        user = User(username=user)
+        author = Author(user=user)
+        obj.created_by = author
+
+        return super(PostCreateView, self).form_valid(form)
 
 
 
