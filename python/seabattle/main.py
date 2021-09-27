@@ -18,6 +18,9 @@ class Dot:
         else:
             return False
 
+    def __hash__(self):
+        return hash((self.x, self.y))
+
 
 class Ship:
     def __init__(self, stern, size, position_vertical):
@@ -34,21 +37,17 @@ class Ship:
     def draw_contur(self):
         x, y = self.stern.x, self.stern.y
         if self.position_vertical:
-            self.contur.extend([Dot(x, y - 1), Dot(x-1, y-1), Dot(x+1, y-1)])
-            for i in range(y, y + self.size):
+            self.ship_position = [Dot(x, i) for i in range(y, y + self.size)]
+            for i in range(y-1, y + self.size +1):
                 self.contur.extend([Dot(x - 1, i), Dot(x + 1, i), Dot(x + 1, i)])
-
-                self.ship_position.append(Dot(x, i))
-
-            self.contur.extend([Dot(x, y + self.size), Dot(x-1, y + self.size), Dot(x+1, y + self.size)])
         else:
-            self.contur.extend([Dot(x - 1, y), Dot(x - 1, y-1), Dot(x - 1, y+1)])
-            for i in range(x, x + self.size):
+            self.ship_position = [Dot(i, y) for i in range(x, x + self.size)]
+            for i in range(x-1, x + self.size+1):
                 self.contur.append(Dot(i, y - 1))
                 self.contur.append(Dot(i, y))
-                self.ship_position.append(Dot(i, y))
+             #   self.ship_position.append(Dot(i, y))
                 self.contur.append(Dot(i, y + 1))
-            self.contur.append(Dot(x + self.size, y))
+
 
 
 class Board:
@@ -77,20 +76,29 @@ class Board:
         :param ship: Ship
         :return: bool
         """
-        for coord in ship.contur:
-            if coord in self.placing_fields:
-                return False
-        for coord in ship.ship_position:
-            if coord in self.border:
-                return False
-        return True
+        set_ship_contur=set(ship.contur)
+        set_ship_position = set(ship.ship_position)
+        set_placing_fields = self.placing_fields
+        set_border = self.border
+        if set_ship_contur.intersection(set_placing_fields) or set_ship_position.intersection(set_border):
+            return False
+        else:
+            return True
+
+        # for coord in ship.contur:
+        #     if coord in self.placing_fields:
+        #         return False
+        # for coord in ship.ship_position:
+        #     if coord in self.border:
+        #         return False
+        # return True
 
     def append_good(self, ship):
         try:
             if self.is_placing(ship):
                 for coord in ship.ship_position:
                     self.fields[coord.x][coord.y].condition = '■'
-                    self.placing_fields.extend(ship.ship_position)
+                self.placing_fields.extend(ship.ship_position)
                 return True
             else:
                 return False
@@ -113,8 +121,8 @@ if __name__ == '__main__':
 
 
 
-    print('0 1 2 3 4 5 6')
-    for i in board.fields[:-1]:
-        for j in i[:-1]:
+    print('0 1 2 3 4 5 6 7')
+    for i in board.fields:
+        for j in i:
             print(j, end=' ')
         print()
