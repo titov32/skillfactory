@@ -19,6 +19,14 @@
         <br>
     </div>
     </div>
+    <h3> Комментарии </h3>
+    {% if comments %}
+            {% for comment in comments %}
+                {{ comment.text }}
+               <b> {{ comment.user }} </b>
+                <br>
+            {% endfor %}
+        {% endif %}
 
 
 {{ flatpage.content }}

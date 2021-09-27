@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 import news.models
-from .models import Post, Author, User
+from .models import Post, Author, User, Comment
 from .filters import PostFilter # импортируем недавно написанный фильтр
 from .forms import PostForm # импортируем нашу форму
 from django.core.paginator import Paginator
@@ -21,6 +21,11 @@ class PostDetail(DetailView):
     # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов
     # через html-шаблон
     context_object_name = 'post'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = Comment.objects.filter(post=self.object)
+        return context
 
 
 class PostsList(ListView):
@@ -108,5 +113,7 @@ class PostsDelete(PermissionRequiredMixin, DeleteView):
     template_name = 'news/delete_news.html'
     queryset = Post.objects.all()
     success_url = '/news/'
+
+
 
 
