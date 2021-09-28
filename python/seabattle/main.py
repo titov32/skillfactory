@@ -1,5 +1,6 @@
 from random import randint
 
+
 class Dot:
     def __init__(self, x, y):
         self.x = x
@@ -38,22 +39,18 @@ class Ship:
         x, y = self.stern.x, self.stern.y
         if self.position_vertical:
             self.ship_position = [Dot(x, i) for i in range(y, y + self.size)]
-            for i in range(y-1, y + self.size +1):
-                self.contur.extend([Dot(x - 1, i), Dot(x + 1, i), Dot(x + 1, i)])
+            for i in range(y - 1, y + self.size + 1):
+                self.contur.extend([Dot(x - 1, i), Dot(x, i), Dot(x + 1, i)])
         else:
             self.ship_position = [Dot(i, y) for i in range(x, x + self.size)]
-            for i in range(x-1, x + self.size+1):
-                self.contur.append(Dot(i, y - 1))
-                self.contur.append(Dot(i, y))
-             #   self.ship_position.append(Dot(i, y))
-                self.contur.append(Dot(i, y + 1))
-
+            for i in range(x - 1, x + self.size + 1):
+                self.contur.extend([Dot(i, y - 1), Dot(i, y), Dot(i, y + 1)])
 
 
 class Board:
     def __init__(self, size):
         self.fields = [[Dot(x, y) for x in range(size)] for y in range(size)]
-        self.placing_fields=[]
+        self.placing_fields = []
         self.border = []
         self.fill_border()
 
@@ -76,22 +73,17 @@ class Board:
         :param ship: Ship
         :return: bool
         """
-        set_ship_contur=set(ship.contur)
+        set_ship_contur = set(ship.contur)
+
         set_ship_position = set(ship.ship_position)
-        set_placing_fields = self.placing_fields
-        set_border = self.border
+
+        set_placing_fields = set(self.placing_fields)
+
+        set_border = set(self.border)
         if set_ship_contur.intersection(set_placing_fields) or set_ship_position.intersection(set_border):
             return False
         else:
             return True
-
-        # for coord in ship.contur:
-        #     if coord in self.placing_fields:
-        #         return False
-        # for coord in ship.ship_position:
-        #     if coord in self.border:
-        #         return False
-        # return True
 
     def append_good(self, ship):
         try:
@@ -106,20 +98,17 @@ class Board:
             print('Добавление не возможно')
             return False
 
+
 if __name__ == '__main__':
     size_board = 7
-    board = Board(size_board+1)
+    board = Board(size_board + 1)
     ships_size = [3, 2, 2, 1, 1, 1, 1]
     for size in ships_size:
         while True:
-            ship = Ship(Dot(randint(0,size_board), randint(0,size_board)), size, randint(0,1))
+            ship = Ship(Dot(randint(0, size_board), randint(0, size_board)), size, randint(0, 1))
             if board.append_good(ship):
                 print(f'корабль {ship} добавлен')
                 break
-            else:
-                print(f'корабль {ship} не добавлен')
-
-
 
     print('0 1 2 3 4 5 6 7')
     for i in board.fields:
