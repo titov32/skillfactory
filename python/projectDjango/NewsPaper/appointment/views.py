@@ -4,9 +4,11 @@ from django.core.mail import send_mail
 from datetime import datetime
 
 from .models import Subscriber
+from .forms import SubscriberForm
 
 
 class SubscriberView(View):
+    form_class = SubscriberForm
     def get(self, request, *args, **kwargs):
         return render(request, 'make_appointment.html', {})
 

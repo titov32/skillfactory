@@ -3,11 +3,9 @@ from django.shortcuts import render
 # Create your views here.
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-import news.models
 from .models import Post, Author, User, Comment
 from .filters import PostFilter # импортируем недавно написанный фильтр
 from .forms import PostForm # импортируем нашу форму
-from django.core.paginator import Paginator
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
 
