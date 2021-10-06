@@ -7,8 +7,11 @@
 <div class="container">
 <form method="POST">
     {% csrf_token %}
-    {{ form }} <!-- Теперь нам нужна только готовая форма и кнопка -->
+
+    {{ form.as_p }}
+
     <input type="submit" value="Подписаться">
+
 </form>
 </div>
 

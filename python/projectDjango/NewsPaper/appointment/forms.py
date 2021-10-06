@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput, Textarea, Select, EmailInput, DateInput
+from django.forms import ModelForm, TextInput, Textarea, Select, EmailInput, DateInput, CharField
 from .models import Subscriber
 
 
@@ -6,9 +6,13 @@ from .models import Subscriber
 class SubscriberForm(ModelForm):
     class Meta:
         model = Subscriber
-        fields = ['client_email', 'client_email', 'sub_category', 'date']
+        fields = ['client_email', 'client_name', 'sub_category', 'date']
         widgets = {
+
             'client_email': EmailInput(attrs={
+                'class': 'form-control'
+            }),
+            'client_name': TextInput(attrs={
                 'class': 'form-control'
             }),
             'sub_category': Select(attrs={
@@ -16,6 +20,6 @@ class SubscriberForm(ModelForm):
             }),
             'date': DateInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'заголовок статьи'
+                'placeholder': 'Дата'
             }),
         }

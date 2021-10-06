@@ -2,6 +2,7 @@ from django.shortcuts import render, reverse, redirect
 from django.views import View
 from django.core.mail import send_mail
 from datetime import datetime
+from django.views.generic.edit import FormView
 
 from .models import Subscriber
 from .forms import SubscriberForm
@@ -16,7 +17,8 @@ class SubscriberView(View):
         subscribe = Subscriber(
             date=datetime.strptime(request.POST['date'], '%Y-%m-%d'),
             client_name=request.POST['client_name'],
-            message=request.POST['message'],
+            client_email=request.POST['client_email'],
+            sub_category=request.POST['sub_category'],
         )
         Subscriber.save()
 
@@ -31,3 +33,15 @@ class SubscriberView(View):
 
 
         return redirect('appointments:make_appointment')
+
+
+class SubscribeFormView(FormView):
+    template_name = 'make_appointment.html'
+    form_class = SubscriberForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        form.send_email()
+        return super().form_valid(form)

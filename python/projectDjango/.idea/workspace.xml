@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f91a36dc-f7bb-40d7-8c82-1aac58e637e6" name="Default Changelist" comment="Added style bootstrapp for templates and worked templates update_news.html, delete_news.html&#10;pagination.html excluded from templates. It template include with rules djnago to templates search.html and news.html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../seabattle/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../seabattle/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/appointment/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/appointment/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/appointment/templates/make_appointment.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/appointment/templates/make_appointment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/appointment/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/appointment/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/appointment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/appointment/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +61,9 @@
       <module name="projectDjango" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../seabattle" />
       <option name="IS_MODULE_SDK" value="false" />
