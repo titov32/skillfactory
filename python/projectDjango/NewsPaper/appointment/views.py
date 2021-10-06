@@ -10,6 +10,7 @@ from .forms import SubscriberForm
 
 class SubscriberView(View):
     form_class = SubscriberForm
+
     def get(self, request, *args, **kwargs):
         return render(request, 'make_appointment.html', {})
 
@@ -27,10 +28,10 @@ class SubscriberView(View):
             subject=f'{subscribe.client_name} {subscribe.date.strftime("%Y-%M-%d")}',
             # имя клиента и дата записи будут в теме для удобства
             message=f'{subscribe.sub_category.title}',  # сообщение с кратким описанием проблемы
-            from_email='email.infomail@yandex.ru',  # здесь указываете почту, с которой будете отправлять (об этом попозже)
+            from_email='email.infomail@yandex.ru',
+            # здесь указываете почту, с которой будете отправлять (об этом попозже)
             recipient_list=['titov32@gmail.com']  # здесь список получателей. Например, секретарь, сам врач и т. д.
         )
-
 
         return redirect('appointments:make_appointment')
 
@@ -45,3 +46,5 @@ class SubscribeFormView(FormView):
         # It should return an HttpResponse.
         form.send_email()
         return super().form_valid(form)
+
+
