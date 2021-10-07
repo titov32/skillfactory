@@ -165,8 +165,14 @@ ACCOUNT_FORMS = {'signup': 'sign.forms.BasicSignupForm',
                  }
 SOCIALACCOUNT_FORMS  = {'signup': 'sign.socialforms.MyCustomSocialSignupForm'}
 
-EMAIL_HOST = 'smtp.yandex.ru' # адрес сервера Яндекс-почты для всех один и тот же
-EMAIL_PORT = 465 # порт smtp сервера тоже одинаковый
-EMAIL_HOST_USER = EMAIL_LOGIN  # ваше имя пользователя, например если ваша почта user@yandex.ru, то сюда надо писать user, иными словами, это всё то что идёт до собаки
-EMAIL_HOST_PASSWORD = EMAIL_PASSWORD # пароль от почты
-EMAIL_USE_SSL = True # Яндекс использует ssl, подробнее о том, что это, почитайте на Википедии, но включать его здесь обязательно
+EMAIL_HOST = '192.168.24.2'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = EMAIL_LOGIN
+EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
+EMAIL_USE_TLS = True
+
+ADMINS = [
+    ('Evgeniy', 'titov32@gmail.com'),
+    # список всех админов в формате ('имя', 'их почта')
+]
+
