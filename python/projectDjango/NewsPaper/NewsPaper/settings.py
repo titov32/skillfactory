@@ -165,14 +165,23 @@ ACCOUNT_FORMS = {'signup': 'sign.forms.BasicSignupForm',
                  }
 SOCIALACCOUNT_FORMS  = {'signup': 'sign.socialforms.MyCustomSocialSignupForm'}
 
-EMAIL_HOST = '192.168.24.2'
-EMAIL_PORT = 25
+
+
+HOST = 'yandex.ru'
+PROTOCOL = 'smtp'
+DEFAULT_FROM_EMAIL = EMAIL_LOGIN + '@' + HOST
 EMAIL_HOST_USER = EMAIL_LOGIN
 EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
-EMAIL_USE_TLS = True
-
+EMAIL_HOST = PROTOCOL + '.' + HOST
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+SERVER_EMAIL  = DEFAULT_FROM_EMAIL
 ADMINS = [
     ('Evgeniy', 'titov32@gmail.com'),
     # список всех админов в формате ('имя', 'их почта')
+]
+
+MANAGERS = [
+    ('Evgeniy', 'titov32@gmail.com'),
 ]
 
