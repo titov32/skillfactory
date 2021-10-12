@@ -31,16 +31,15 @@ class SubscribeFormView(FormView):
             sub_category=sub_category,
         )
         subscribe.save()
-        print(client_name, client_email, sub_category)
 
-        send_mail(
-            subject=f'{client_name} оформлена подписка ',
-            # имя клиента и дата записи будут в теме для удобства
-            message=f'Вы подписаны на {sub_category}',  # сообщение с кратким описанием проблемы
-            from_email='email.infomail@yandex.ru',
-            # здесь указываете почту, с которой будете отправлять (об этом попозже)
-            recipient_list=[client_email]  # здесь список получателей. Например, секретарь, сам врач и т. д.
-        )
+        # send_mail(
+        #     subject=f'{client_name} оформлена подписка ',
+        #     # имя клиента и дата записи будут в теме для удобства
+        #     message=f'Вы подписаны на {sub_category}',  # сообщение с кратким описанием проблемы
+        #     from_email='email.infomail@yandex.ru',
+        #     # здесь указываете почту, с которой будете отправлять (об этом попозже)
+        #     recipient_list=[client_email]  # здесь список получателей. Например, секретарь, сам врач и т. д.
+        # )
         return super().form_valid(form)
 
 

@@ -1,16 +1,12 @@
-{% extends 'flatpages/default.html' %}
-
-{% block title %}
-Подписка на новости
-{% endblock title %}
-{% block content %}
-
-<div class="container">
-<form method="POST">
-    {% csrf_token %}
-    {{ form }} <!-- Теперь нам нужна только готовая форма и кнопка -->
-    <input type="submit" value="Подписаться">
-</form>
-</div>
-
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> Есть новые посты!</h2>
+    <p> Появился пост <b>{{ title }} </b> {{ text|truncatechars:50 }} </p>
+</body>
+</html>
