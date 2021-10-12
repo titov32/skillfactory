@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-from .secret import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -58,7 +57,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # ... include the providers you want to enable:
     'allauth.socialaccount.providers.google',
-    'appointment'
+    'appointment.apps.AppointmentConfig',
 ]
 
 MIDDLEWARE = [
@@ -165,17 +164,13 @@ ACCOUNT_FORMS = {'signup': 'sign.forms.BasicSignupForm',
                  }
 SOCIALACCOUNT_FORMS  = {'signup': 'sign.socialforms.MyCustomSocialSignupForm'}
 
+DEVEL_HOME = False
 
+if DEVEL_HOME:
+    from .mail_yandex import *
+else:
+    from .mail_work import *
 
-HOST = 'yandex.ru'
-PROTOCOL = 'smtp'
-DEFAULT_FROM_EMAIL = EMAIL_LOGIN + '@' + HOST
-EMAIL_HOST_USER = EMAIL_LOGIN
-EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
-EMAIL_HOST = PROTOCOL + '.' + HOST
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
-SERVER_EMAIL  = DEFAULT_FROM_EMAIL
 ADMINS = [
     ('Evgeniy', 'titov32@gmail.com'),
     # список всех админов в формате ('имя', 'их почта')

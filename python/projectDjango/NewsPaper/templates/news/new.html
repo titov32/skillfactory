@@ -19,6 +19,11 @@
         <br>
     </div>
     </div>
+    <div class="container">
+        {% for category in post.postCategory.all %}
+        <h5> {{ category }} </h5>
+        {% endfor %}
+    </div>
     <h3> Комментарии </h3>
     {% if comments %}
             {% for comment in comments %}

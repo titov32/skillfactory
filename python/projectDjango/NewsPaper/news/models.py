@@ -30,10 +30,10 @@ class Author(models.Model):
 
 
 class Category(models.Model):
-    category = models.CharField(max_length=64, unique=True)
+    name_category = models.CharField(max_length=64, unique=True)
 
     def __str__(self):
-        return f'{self.category}'
+        return f'{self.name_category}'
 
 
 class Post(models.Model):

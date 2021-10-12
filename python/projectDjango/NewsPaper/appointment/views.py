@@ -10,19 +10,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
-# создаём функцию обработчик с параметрами под регистрацию сигнала
-def notify_managers_appointment(sender, instance, created, **kwargs):
-    if created:
-        subject = f'{instance.client_name} {instance.date.strftime("%d %m %Y")}'
-    else:
-        subject = f'Appointment changed for {instance.client_name} {instance.date.strftime("%d %m %Y")}'
 
-    mail_managers(
-        subject=subject,
-        message='fdfdf',
-    )
-
-post_save.connect(notify_managers_appointment, sender=Subscriber)
 
 class SubscribeFormView(FormView):
     template_name = 'make_appointment.html'
