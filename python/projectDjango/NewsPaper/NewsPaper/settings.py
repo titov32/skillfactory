@@ -164,7 +164,7 @@ ACCOUNT_FORMS = {'signup': 'sign.forms.BasicSignupForm',
                  }
 SOCIALACCOUNT_FORMS  = {'signup': 'sign.socialforms.MyCustomSocialSignupForm'}
 
-DEVEL_HOME = True
+DEVEL_HOME = False
 
 if DEVEL_HOME:
     from .mail_yandex import *
