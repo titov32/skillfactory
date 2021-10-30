@@ -7,8 +7,8 @@ from .models import Post, Author, User, Comment
 from .filters import PostFilter # импортируем недавно написанный фильтр
 from .forms import PostForm # импортируем нашу форму
 from django.contrib.auth.mixins import PermissionRequiredMixin
-
-
+from appointment.utils import PostCountException
+from django.shortcuts import redirect
 
 class PostDetail(DetailView):
     # указываем модель, объекты которой мы будем выводить
@@ -81,18 +81,22 @@ class PostsSearch(ListView):
 
 
 class PostCreateView(PermissionRequiredMixin, CreateView):
-    permission_required = ('news.add_post')
-    model = Post
-    template_name = 'news/create_news.html'
-    form_class = PostForm
+    try:
+        permission_required = ('news.add_post')
+        model = Post
+        template_name = 'news/create_news.html'
+        form_class = PostForm
 
-    def form_valid(self, form):
-        obj = form.save(commit=False)
-        user = self.request.user
-        user = User.objects.get(username=user)
-        author = Author.objects.get(user=user)
-        obj.created_by = author
-        return super(PostCreateView, self).form_valid(form)
+        def form_valid(self, form):
+            obj = form.save(commit=False)
+            user = self.request.user
+            user = User.objects.get(username=user)
+            author = Author.objects.get(user=user)
+            obj.created_by = author
+            return super(PostCreateView, self).form_valid(form)
+    except PostCountException:
+        def save():
+            redirect('/')
 
 
 class PostsUpdate(PermissionRequiredMixin, UpdateView):

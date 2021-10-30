@@ -6,7 +6,7 @@ from django.dispatch import receiver
 from news.models import Post
 from django.core.mail import EmailMultiAlternatives
 import datetime
-from django.shortcuts import redirect
+from .utils import PostCountException
 
 # создаём функцию обработчик с параметрами под регистрацию сигнала
 @receiver(post_save, sender=Subscriber)
@@ -38,6 +38,7 @@ def notify_users_appointment(sender, instance, **kwargs):
         {
             'text': text,
             'title': title,
+            'pk': instance.pk,
         }
     )
 
@@ -55,10 +56,14 @@ m2m_changed.connect(notify_users_appointment, sender=Post.postCategory.through)
 
 @receiver(pre_save, sender=Post)
 def restrict_new_post(sender, instance, **kwargs):
+    print('_____________________')
+    print(instance)
+    print('dir instance', dir(instance))
+    print(instance.get_absolute_url())
     author = instance.created_by
     today_min = datetime.datetime.combine(datetime.date.today(), datetime.time.min)
     today_max = datetime.datetime.combine(datetime.date.today(), datetime.time.max)
     count_posts = Post.objects.filter(created_by=author, timeCreation__range=(today_min, today_max)).count()
     print('kol-vo postov',count_posts)
     if count_posts > 1:
-        return redirect('/')
+        instance.full_clean()
