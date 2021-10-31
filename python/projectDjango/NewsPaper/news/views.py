@@ -9,6 +9,7 @@ from .forms import PostForm # импортируем нашу форму
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from appointment.utils import PostCountException
 from django.shortcuts import redirect
+import datetime
 
 class PostDetail(DetailView):
     # указываем модель, объекты которой мы будем выводить
@@ -81,22 +82,33 @@ class PostsSearch(ListView):
 
 
 class PostCreateView(PermissionRequiredMixin, CreateView):
-    try:
-        permission_required = ('news.add_post')
-        model = Post
-        template_name = 'news/create_news.html'
-        form_class = PostForm
 
-        def form_valid(self, form):
-            obj = form.save(commit=False)
-            user = self.request.user
-            user = User.objects.get(username=user)
-            author = Author.objects.get(user=user)
-            obj.created_by = author
-            return super(PostCreateView, self).form_valid(form)
-    except PostCountException:
-        def save():
-            redirect('/')
+    permission_required = ('news.add_post')
+    model = Post
+    template_name = 'news/create_news.html'
+    form_class = PostForm
+
+    def get_context_data(self, **kwargs):
+        """
+        определяем контекст для последующего ограничения ввода в шаблонах
+        """
+        context = super().get_context_data(**kwargs)
+        today_min = datetime.datetime.combine(datetime.date.today(), datetime.time.min)
+        today_max = datetime.datetime.combine(datetime.date.today(), datetime.time.max)
+        user = self.request.user
+        user = User.objects.get(username=user)
+        author = Author.objects.get(user=user)
+        count_posts = Post.objects.filter(created_by=author, timeCreation__range=(today_min, today_max)).count()
+        context['count_post'] = count_posts
+        return context
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        user = self.request.user
+        user = User.objects.get(username=user)
+        author = Author.objects.get(user=user)
+        obj.created_by = author
+        return super(PostCreateView, self).form_valid(form)
 
 
 class PostsUpdate(PermissionRequiredMixin, UpdateView):

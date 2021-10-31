@@ -4,11 +4,23 @@
 {% endblock title %}
 {% block content %}
 
+{{count_post}}
 <div class="container">
 <form method="POST">
     {% csrf_token %}
     {{ form }} <!-- Теперь нам нужна только готовая форма и кнопка -->
-    <input type="submit" value="Добавить пост">
+    {% if count_post > 2 %}
+        <div class="alert alert-warning" role="alert">
+            Превышено ежедневное количество постов
+        </div>
+        <input class="btn-secondary btn-lg"
+               disabled  data-bs-toggle="tooltip"
+               data-bs-placement="top"
+               title="Превышено ежедневное количество постов "
+               type="submit" value="Добавить пост">
+    {% else %}
+        <input class="btn btn-primary"  type="submit" value="Добавить пост">
+    {% endif %}
 </form>
 </div>
 
