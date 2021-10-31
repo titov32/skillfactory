@@ -54,4 +54,4 @@ def notify_users_appointment(sender, instance, **kwargs):
 # коннект фунции со связими мани_ту_мани
 m2m_changed.connect(notify_users_appointment, sender=Post.postCategory.through)
 
-
+ 
