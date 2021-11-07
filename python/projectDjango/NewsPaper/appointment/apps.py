@@ -9,14 +9,16 @@ class AppointmentConfig(AppConfig):
     def ready(self):
         import appointment.signals
 
+""" Ниже код может быть раскометирован для того чтобы отрпалвялть сообщения через task.py
         from .tasks import send_mail
         from .scheduler import appointment_scheduler
-        print('started')
+        print('started job from scheduler')
 
         appointment_scheduler.add_job(
             id = 'mail send',
             func = send_mail,
             trigger= 'interval',
-            days = 7,
+            seconds = 30,
         )
         appointment_scheduler.start()
+"""

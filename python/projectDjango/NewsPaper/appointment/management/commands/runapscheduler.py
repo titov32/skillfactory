@@ -9,26 +9,46 @@ from django_apscheduler.jobstores import DjangoJobStore
 from django_apscheduler.models import DjangoJobExecution
 import datetime
 from news.models import Post, Category
+from appointment.models import Subscriber
+from django.template.loader import render_to_string
+from django.core.mail import EmailMultiAlternatives
+
+
 
 logger = logging.getLogger(__name__)
 
 
 # наша задача по выводу текста на экран
 def my_job():
+    print('send messages from management')
+    list_email = []
+    # Получаем все доступные категории
     for category in Category.objects.all():
         today = datetime.datetime.combine(datetime.date.today(), datetime.time.max)
-        last_week= datetime.datetime.combine(datetime.date.today() - datetime.timedelta(days=7), datetime.time.max)
+        last_week = datetime.datetime.combine(datetime.date.today() - datetime.timedelta(days=7), datetime.time.max)
+        #получаем посты за последнюю неделю с данной категорией
         posts_category = Post.objects.filter(postCategory=category, timeCreation__range=(last_week, today))
-
-    list_email = []
-    categories = instance.postCategory.all()
-    text = instance.text[:50]
-    title = instance.title
-    for category in categories:
         list1 = Subscriber.objects.filter(sub_category=category)
         for mail in list1:
             list_email.append(mail.client_email)
-    recipient_list = list(set(list_email))
+        recipient_list = list(set(list_email))
+
+        html_content = render_to_string(
+            'weekly_send_posts.html',
+            {
+                'posts_category': posts_category
+            }
+        )
+
+        msg = EmailMultiAlternatives(
+            subject=f'Новое за неделю',
+            body='This is an important message.',  # это то же, что и message
+            from_email='email.infomail@yandex.ru',
+            to=recipient_list,  # это то же, что и recipients_list
+        )
+        msg.attach_alternative(html_content, "text/html")  # добавляем html
+        msg.send()  # отсылаем
+
 
 
 # функция которая будет удалять неактуальные задачи

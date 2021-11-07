@@ -1,4 +1,4 @@
-from django.core.mail import mail_managers
+from django.core.mail import mail_managers, send_mail
 from django.template.loader import render_to_string
 from .models import Subscriber
 from django.db.models.signals import post_save, m2m_changed, pre_save
@@ -7,6 +7,7 @@ from news.models import Post
 from django.core.mail import EmailMultiAlternatives
 import datetime
 from .utils import PostCountException
+from django.contrib.auth.models import User
 
 # создаём функцию обработчик с параметрами под регистрацию сигнала
 @receiver(post_save, sender=Subscriber)
@@ -55,3 +56,15 @@ def notify_users_appointment(sender, instance, **kwargs):
 m2m_changed.connect(notify_users_appointment, sender=Post.postCategory.through)
 
  
+@receiver(post_save, sender=User)
+def notify_new_user(sender, instance, created, **kwargs):
+
+    if created:
+        subject = f'Dear {instance.first_name} приветствуем'
+
+        send_mail(
+            subject=subject,
+            message=f'Вы зарегистровались на новостном портале',
+            from_email='email.infomail@yandex.ru',
+            recipient_list=[instance.email]
+        )

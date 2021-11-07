@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> Есть новые посты!</h2>
+{% for post in posts_category%}
+    <span> <a href="http://localhost:8000/news/{{post.pk}}">{{post.title}}</a> </span>
+    {{ post.text|truncatechars:50 }}
+    <br>
+{% endfor %}
+</body>
+</html>
