@@ -12,6 +12,10 @@
 </form>
 </div>
 -->
+        {% load cache %} <!-- Загружаем кэширование -->
+            {% cache 30 all_news %}
+            {% block all_news %}
+
     <div class="container">
     <div class="text-left mt-5">
     <h1>Все новости </h1>
@@ -32,5 +36,7 @@
     </div>
 {% include 'news/pagination.html' %}
 <a href="/subscribe/" class="link_secondary"> Подписаться</a>
+            {% endblock all_news %}
+        {% endcache %}
 
 {% endblock content %}
