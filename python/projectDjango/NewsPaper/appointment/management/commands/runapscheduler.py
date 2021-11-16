@@ -34,7 +34,7 @@ def my_job():
         recipient_list = list(set(list_email))
 
         html_content = render_to_string(
-            'weekly_send_posts.html',
+            'appointment/weekly_send_posts.html',
             {
                 'posts_category': posts_category
             }

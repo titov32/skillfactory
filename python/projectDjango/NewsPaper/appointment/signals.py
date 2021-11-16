@@ -35,7 +35,7 @@ def notify_users_appointment(sender, instance, **kwargs):
     recipient_list = list(set(list_email))
 
     html_content = render_to_string(
-        'appointment_created.html',
+        'appointment/appointment_created.html',
         {
             'text': text,
             'title': title,

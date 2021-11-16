@@ -6,7 +6,7 @@ from django.dispatch import receiver
 
 
 class SubscribeFormView(FormView):
-    template_name = 'make_appointment.html'
+    template_name = 'appointment/make_appointment.html'
     form_class = SubscriberForm
     success_url = '/'
 
