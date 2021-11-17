@@ -10,6 +10,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from appointment.utils import PostCountException
 from django.shortcuts import redirect
 import datetime
+from django.core.cache import cache
 
 class PostDetail(DetailView):
     # указываем модель, объекты которой мы будем выводить
@@ -20,6 +21,18 @@ class PostDetail(DetailView):
     # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку объектов
     # через html-шаблон
     context_object_name = 'post'
+
+
+    def get_object(self, *args, **kwargs):  # переопределяем метод получения объекта, как ни странно
+        obj = cache.get(f'post-{self.kwargs["pk"]}',
+                        None)  # кэш очень похож на словарь, и метод get действует также. Он забирает значение по ключу, если его нет, то забирает None.
+
+        # если объекта нет в кэше, то получаем его и записываем в кэш
+        if not obj:
+            obj = super().get_object()
+            cache.set(f'post-{self.kwargs["pk"]}', obj)
+
+        return obj
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -45,6 +58,7 @@ class PostsList(ListView):
         context = super().get_context_data(**kwargs)
         context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset()) # вписываем наш фильтр в контекст
         context['form'] = PostForm()
+        context['page_news'] = 'active'
         return context
 
     def post(self, request, *args, **kwargs):
@@ -75,8 +89,10 @@ class PostsSearch(ListView):
         return self.get_filter().qs
 
     def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['page_search'] = 'active'
         return {
-            **super().get_context_data(*args, **kwargs),
+            **context,
             "filter": self.get_filter(),
         }
 
@@ -100,6 +116,7 @@ class PostCreateView(PermissionRequiredMixin, CreateView):
         author = Author.objects.get(user=user)
         count_posts = Post.objects.filter(created_by=author, timeCreation__range=(today_min, today_max)).count()
         context['count_post'] = count_posts
+        context['page_editor'] = 'active'
         return context
 
     def form_valid(self, form):
@@ -120,6 +137,11 @@ class PostsUpdate(PermissionRequiredMixin, UpdateView):
     def get_object(self, **kwargs):
         id = self.kwargs.get('pk')
         return Post.objects.get(pk=id)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_editor'] = 'active'
+        return context
 
 
 class PostsDelete(PermissionRequiredMixin, DeleteView):

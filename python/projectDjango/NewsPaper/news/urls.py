@@ -5,7 +5,7 @@ from django.views.decorators.cache import cache_page
 
 urlpatterns = [
     # path — означает путь. В данном случае путь ко всем товарам у нас останется пустым, позже станет ясно почему
-    path('', cache_page(60)(PostsList.as_view())),
+    path('', cache_page(10)(PostsList.as_view())),
     # т.к. сам по себе это класс, то нам надо представить этот класс в виде view. Для этого вызываем метод as_view
     path('<int:pk>', PostDetail.as_view(), name='post_detail' ),
     path('search/', PostsSearch.as_view()),
