@@ -2,6 +2,12 @@ from random import randint
 
 
 class Dot:
+    """
+    Class Dot contain conditions self
+    '■' - содержит корабль
+    'x' - bit ship
+    'X' - Dead ship
+    """
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -21,6 +27,17 @@ class Dot:
 
     def __hash__(self):
         return hash((self.x, self.y))
+
+    def connection_ship(self):
+        pass
+
+    def destroy(self):
+        if self.condition in 'XT#':
+            print('Уже стреляли')
+        if self.condition == '0':
+            self.condition == 'X'
+
+
 
 
 class Ship:
